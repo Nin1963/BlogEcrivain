@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="jumbotron">
+        <h1>Ajouter un chapitre</h1>
+        {{ include('admin/chapter/_form.html.twig', {button: 'Ajouter le chapitre'}) }} 
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+<script src="{{ asset ('tiny_mce/tiny_mce.js') }}"></script>
+<script>
+    tinymce.init({
+      selector: 'textarea',
+    });
+</script>
+{% endblock %}

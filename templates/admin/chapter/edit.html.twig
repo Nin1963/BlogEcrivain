@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title chapter.title %}
+
+{% block body %}
+    <div class='jumbotron'>
+        <strong><h1>{{ chapter.title }}</h1></strong>
+        <div class="date">
+        <em>Ecrit le {{ chapter.createdAt | date('d/m/Y') }} à {{ chapter.createdAt | date('H:i') }}</em>
+        </div>
+        <br>
+        <div class="content">
+            <p>{{chapter.content | raw }}
+        </div>
+    </div>
+    
+    <div class="jumbotron">
+        <strong><h2>Commentaires ({{ chapter.comments | length }})</h2></strong>
+        {% for comment in chapter.comments %}
+        {{ comment.author}} (<small>{{ comment.createdAt | date('d/m/y à H:i') }}</small>)
+        <p>{{ comment.content | raw }}</p>
+        {% endfor %}
+    </div>
+    <div class="jumbotron">
+        <h1>Modifier le chapitre</h1>
+        {{ include('admin/chapter/_form.html.twig', {button: 'Modifier le chapitre'}) }}
+        <div>
+            <form method="post" action="{{ path('admin.chapter.delete', {id: chapter.id}) }}" onsubmit="return confirm('Êtes-vous vraiment sûr(e)?')">
+                <input type="hidden" name="_method" value="DELETE">
+                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ chapter.id) }}">
+                <button >Supprimer</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset ('tiny_mce/tiny_mce.js') }}"></script>
+    <script>
+        tinymce.init({
+        selector: 'textarea',
+        });
+    </script>
+{% endblock %}

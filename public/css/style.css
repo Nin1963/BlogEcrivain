@@ -1,0 +1,151 @@
+body {
+	font-family: 'Bitter', serif;
+	position: relative;
+	background: url('../img/fond.jpg') no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	background-size: cover;
+	-o-background-size: cover;
+}
+
+
+.navbar-nav
+{
+	
+}
+
+.title
+{
+	color: white;
+}
+
+.chapitre
+{
+	font-size: 60px;
+	text-align: center;
+}
+
+.chapitres
+{
+	font-size: 18px;
+	margin-left: -460px;
+}
+
+.date
+{
+	text-align: center;
+}
+
+.commentaire
+{
+	margin-top: 150px;
+}
+
+#comment
+{
+	
+}
+
+.deconnexion
+{
+	
+}
+
+.ecrit
+{
+	color: white;
+}
+.author
+{
+	text-align: left;
+}
+
+.bienvenue
+{
+	color: white;
+}
+
+h1, h2, h3, h6, form
+{
+	text-align: center;
+}
+
+img 
+{
+	width: 100%;
+}
+
+td
+{
+	text-align: center;
+	font-size: 26px;
+}
+
+form
+{
+	margin-top: 80px;
+	margin-left: 20px;
+}
+
+.comment
+{
+	margin-top: 0px;
+}
+
+footer.row 
+{
+	margin: 20px 0 40px 0;
+}
+
+.fa-twitter, .fa-facebook, .fa-google-plus, .fa-flickr, .fa-spotify 
+{
+	color: rgb(33, 37, 41)
+}
+
+.jumbotron 
+{
+	padding: 30px;
+	margin: 40px;
+	background: rgba(255, 255, 255, 0.5);
+}
+
+.jumbotron img 
+{
+	padding-bottom: 20px;
+}
+
+.mot_de_passe
+{
+	margin-top: 250px;
+}
+
+.pass
+{
+	text-align: center;
+}
+
+#password
+{
+	text-align: center;
+}
+
+.delete
+{
+	margin-top: -110px;
+	margin-left: 120px;
+}
+
+textarea
+{
+	font-size: 15px;
+}
+
+@media(min-width:768px) {
+	.navbar-right {
+		margin-right: 0px;
+	}
+
+	#content {
+		width: 95%;
+	}
+}

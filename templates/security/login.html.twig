@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Se connecter' %}
+
+{% block body %}
+    <div class="jumbotron">
+        <strong><h1>Mot de passe</h1></strong>
+    {% if error %}
+        <div class="container alert alert-success" role="alert">{{ error.messageKey | trans(error.messagedata, 'security') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    {% endif %}
+        <h3>Veuillez remplir ces champs avec votre login et votre mot de passe pour accéder à la partie administration de votre site</h3>
+        <h6>Si votre login et/ou mot de passe est erroné, vous reviendrez sur cette page ;)</h6>
+
+        <form action="{{ path('login') }}" method="post">
+            <label for="username">Login : </label>
+            <input type="text" id="username" name="_username" required value="{{ last_username }}"><br><br>
+            <label for="password">Mot de passe : </label>
+            <input type="password" id="password" name="_password" required /><br><br>
+            <input type="submit" name="connexion" value="Connexion">
+        </form>
+    </div>
+{% endblock %}

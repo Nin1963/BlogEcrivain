@@ -1,0 +1,5 @@
+{{ form_start(form) }}
+{{ form_row(form.title) }}
+{{ form_row(form.content) }}
+    <button type="submit">{{ button | default ('Modifier le chapitre') }}</button>
+{{ form_end(form) }}

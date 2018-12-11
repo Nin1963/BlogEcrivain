@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+{% block title 'Administration' %}
+{% block body %}
+    <div class="container">
+        <div class="jumbotron">
+            <h1><strong>Bienvenue <br> dans la partie administration de votre site!</strong></h1>
+            <h2>La partie administration est l'endroit du site où vous pourrez gérer la publication, la modification ou la suppréssion de vos chapitres. Vous avez aussi la charge de modérer les "commentaires signalés" laissés sur votre site (<a href="http://eduscol.education.fr/internet-responsable/ressources/legamedia/liberte-d-expression-et-ses-limites.html">rappel de la liberté d'expression et de ses limites</a>)</h2>
+        </div>
+        {% for message in app.flashes('success') %}
+            <div class="container alert alert-success" role="alert">{{ message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        {% endfor %}
+        <div class="jumbotron jumbotron-fluid">
+            <h1 class="chapitre">Chapitres</h1>
+                <table class="table table-borderless table-dark">
+                    <tbody>
+                        {% for chapter in chapters %}
+                            <tr> 
+                                <td scope="row">{{ chapter.title }}</td>
+                                <td>
+                                <a  class="btn btn-outline-success" href="{{ path('admin.chapter.edit',{'id': chapter.id}) }}" data-toogle="tooltip" data-original-title="Modifier ou supprimer ce chapitre" data-placement="right"><i class="fa fa-edit text-primary"></i> <span class="text-white">/</span> <i class="fa fa-trash text-warning"></i></a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody> 
+                </table>
+        </div>
+        <div class="jumbotron jumbotron-fluid">
+            <h2><a href="{{ path('admin.chapter.new') }}"><strong>Ajouter un chapitre</strong></h2></a></h2>
+            {#{{ include('admin/chapter/_form.html.twig') }}#}
+        </div>
+        <div class="jumbotron jumbotron-fluid">
+            <h2><a href="{{ path('comment.signal') }}"><strong>Commentaires signalés</strong></a></h2>
+        </div>
+        
+    </div>    
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+<script src="{{ asset ('tiny_mce/tiny_mce.js') }}"></script>
+<script>
+    tinymce.init({
+      selector: 'textarea'
+    });
+</script>
+{% endblock %}    
+  

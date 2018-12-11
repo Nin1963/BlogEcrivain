@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container">
+    <div class="jumbotron" id="accueil">
+        <h1 class="chapitre">Billet pour l'Alaska</h1>
+        <h2 class="bienvenue">Bienvenue sur mon blog</h2>
+        <div class="row align-items-start">
+            <img class="col-4" src="{{ asset ('img/livre.jpg') }}" alt="livre">
+            <p class="col-8" id="bienvenue"><strong>Pour mon nouveau livre "Billet pour l'Alaska", je souhaiterai vous inviter à collaborer avec moi. Comment? Tout simplement en me laissant vos commentaires sur les chapitres que je mettrai en ligne. Vos commentaires seront une matière précieuse pour nourrir mon imagination.<br>Vous respecterez, bien entendu, un minimum de règles élémentaires juridiques et/ou de courtoisie (je me reserve le droit de supprimer ou non tous commentaires signalés).<br>
+            Une nouvelle forme d'écriture, d'échanges entre les lecteurs et l'auteur.</strong> </p>
+        </div>
+    </div>
+    {% for message in app.flashes('success
+    ') %}
+    <div class="container alert alert-success" role="alert">{{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endfor %}
+    <div class="jumbotron jumbotron-fluid">
+        <h1 class="chapitre">Chapitres</h1>
+        {% for chapter in chapters %}
+            <strong><h2 class="title">{{ chapter.title }}</h2></strong>
+            <div class="date">
+                <em>Ecrit le {{ chapter.createdAt | date('d/m/Y') }} à {{ chapter.createdAt | date('H:i') }}</em>
+            </div>
+            <br>
+            <div class="content">
+                <p>{{chapter.content | truncate(300) | raw }}
+              
+                <br>
+                <a href="{{ path('chapter.show', {id: chapter.id, slug: chapter.slug}) }}">Lire la suite....</a></p>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
