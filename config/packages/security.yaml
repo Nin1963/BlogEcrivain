@@ -12,8 +12,9 @@ security:
         main:
             anonymous: true
             logout: 
-                path: /logout
-                target: /logout_message
+                path: logout
+                target: logout_message
+              
 
             # activate different ways to authenticate
 

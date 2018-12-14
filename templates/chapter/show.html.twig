@@ -4,7 +4,7 @@
     <div class='jumbotron'>
         <strong><h2 class="title">{{ chapter.title }}</h2></strong>
         <div class="date">
-        <em>Ecrit le {{ chapter.createdAt | date('d/m/Y') }} à {{ chapter.createdAt | date('H:i') }}</em>
+            <em>Ecrit le {{ chapter.createdAt | date('d/m/Y') }} à {{ chapter.createdAt | date('H:i') }}</em>
         </div>
         <br>
         <div class="content">
@@ -12,31 +12,28 @@
         </div>
     </div>
     {% for message in app.flashes('success') %}
-        <div class="container alert alert-success" role="alert">{{ message }}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
+    <div class="container alert alert-success" role="alert">{{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
     {% endfor %}
     <div class="jumbotron">
         <strong><h2>Commentaires ({{ chapter.comments | length }})</h2></strong>
         {% for comment in chapter.comments %}
-            {{ comment.author}} (<small>{{ comment.createdAt | date('d/m/y à H:i') }}</small>)
-            <p>{{ comment.content | raw }}</p>
-            {% if comment.signaled == false %}
-            <p><a href="{{ path ('chapter.show', { 
-                 'slug': chapter.slug,'id': chapter.id, 'idComment': comment.id, 'signal': true}) }}">(signaler)</a></p>
-            {% endif %}
+        {{ comment.author}} (<small>{{ comment.createdAt | date('d/m/y à H:i') }}</small>)
+        <p>{{ comment.content | raw }}</p>
+        {% if comment.signaled == false %}
+        <p><a href="{{ path ('chapter.show', {'slug': chapter.slug,'id': chapter.id, 'idComment': comment.id, 'signal': true}) }}">(signaler)</a></p>
+        {% endif %}
         {% endfor %}
         <br>
         <br>
         <p style="text-align: center"><strong>Ajouter un commentaire si vous le voulez! :)</strong></p>
-
         {{ form_start(form) }}
         {{ form_row(form.author) }}
         {{ form_row(form.content) }}
         <input type="submit">
         {{ form_end(form) }}
     </div> 
-
 {% endblock %}

@@ -11,8 +11,7 @@
             Une nouvelle forme d'écriture, d'échanges entre les lecteurs et l'auteur.</strong> </p>
         </div>
     </div>
-    {% for message in app.flashes('success
-    ') %}
+    {% for message in app.flashes('success') %}
     <div class="container alert alert-success" role="alert">{{ message }}
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
@@ -29,7 +28,6 @@
             <br>
             <div class="content">
                 <p>{{chapter.content | truncate(300) | raw }}
-              
                 <br>
                 <a href="{{ path('chapter.show', {id: chapter.id, slug: chapter.slug}) }}">Lire la suite....</a></p>
             </div>

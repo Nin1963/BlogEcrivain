@@ -81,7 +81,6 @@ class ChapterController extends AbstractController
             $signaledComment = $this->repositoryComment->find($idComment);
            
             $signaledComment->setSignaled(true);
-            dump($signaledComment);
             $this->em->flush();
 
             $this->addFlash('success', 'Commentaire signalé');
@@ -93,6 +92,4 @@ class ChapterController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
-
-    
 }

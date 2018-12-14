@@ -30,6 +30,7 @@ class HomeController extends AbstractController
     public function index(ChapterRepository $repository): Response
     {
         $chapters = $repository->findAll();
+        
         return $this->render('pages/home.html.twig', [
             'chapters' => $chapters
         ]);
